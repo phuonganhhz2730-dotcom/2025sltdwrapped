@@ -43,7 +43,6 @@
   </style>
 </head>
 <body>
-
 <h2>Chào mừng bạn đã đến với SLTĐ 2025's Wrapped!</h2>
 <p>Hãy điền câu trả lời phù hợp nhất với bạn nhé.</p>
 
@@ -73,24 +72,19 @@
 </form>
 
 <script>
-const WEBHOOK_URL = "https://webhook.site/cdfbdc61-5422-4c0f-b359-303ba939633e";
+document.getElementById("wrappedForm").addEventListener("submit", async function(event) {
+  event.preventDefault(); // Ngăn submit mặc định
 
-document.getElementById("wrappedForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  
   const formData = new FormData(this);
 
-  fetch(WEBHOOK_URL, {
+  // Gửi tới Webhook.site
+  await fetch("https://webhook.site/cdfbdc61-5422-4c0f-b359-303ba939633e", {
     method: "POST",
     body: formData
-  })
-  .then(() => {
-    // ⭐ Redirect sang trang cảm ơn
-    window.location.href = "thankyou.html"; 
-  })
-  .catch(() => {
-    alert("Có lỗi xảy ra, vui lòng thử lại!");
   });
+
+  // Chuyển sang trang cảm ơn
+  window.location.href = "thankyou.html";
 });
 </script>
 
