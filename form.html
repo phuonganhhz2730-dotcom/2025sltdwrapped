@@ -2,26 +2,30 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Form chính</title>
+  <title>SLTĐ 2025's Wrapped</title>
   <style>
     body {
       font-family: "Times New Roman", serif;
       padding: 40px;
       background-color: #4b000f; /* đỏ rượu */
       color: #f5e7c6; /* beige */
+      font-size: 20px;
+      line-height: 1.6;
     }
     textarea {
       width: 100%;
       margin-top: 10px;
-      padding: 10px;
+      padding: 12px;
       font-family: "Times New Roman", serif;
-      font-size: 16px;
+      font-size: 18px;
       background-color: #ffffffd8;
+      border-radius: 6px;
+      border: none;
     }
     button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 16px;
+      margin-top: 25px;
+      padding: 14px 26px;
+      font-size: 20px;
       font-family: "Times New Roman", serif;
       background-color: #f5e7c6;
       color: #4b000f;
@@ -32,39 +36,43 @@
     button:hover {
       background-color: #e4d8bc;
     }
+    h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
+
 <body>
-
 <h2>Chào mừng bạn đã đến với SLTĐ 2025's Wrapped!</h2>
-<pp>Hãy điền đáp án bạn cảm thấy phù hợp nhất nhé.</p>
+<p>Hãy đưa ra lựa chọn của bản thân nhé</p>
 
-<!-- FORM: gửi dữ liệu về email của bạn -->
+<!-- FORM gửi đến Formspree -->
 <form action="https://formspree.io/f/mrbnnvwr" method="POST">
 
   <p><strong>1. Khoảnh khắc rung động nhất trong năm 2025?</strong></p>
-  <textarea name="q1_khoanh_khac_rung_dong" rows="4"></textarea>
+  <textarea name="moment_2025" rows="4"></textarea>
 
   <p><strong>2. Artist của năm đối với bạn là ai?</strong></p>
-  <textarea name="q2_artist" rows="4"></textarea>
+  <textarea name="artist_2025" rows="3"></textarea>
 
   <p><strong>3. Writer của năm đối với bạn là ai?</strong></p>
-  <textarea name="q3_writer" rows="4"></textarea>
+  <textarea name="writer_2025" rows="3"></textarea>
 
   <p><strong>4. Editor của năm đối với bạn là ai?</strong></p>
-  <textarea name="q4_editor_1" rows="4"></textarea>
+  <textarea name="editor_2025" rows="3"></textarea>
 
   <p><strong>5. Bức fanart couple của năm đối với bạn là bức nào?</strong></p>
-  <textarea name="q5_fanart" rows="4"></textarea>
+  <textarea name="fanart_2025" rows="4"></textarea>
 
   <p><strong>6. Fanfic của năm đối với bạn là fic nào?</strong></p>
-  <textarea name="q6_fanfic" rows="4"></textarea>
+  <textarea name="fanfic_2025" rows="4"></textarea>
 
   <p><strong>7. Màn tương tác online của năm đối với bạn?</strong></p>
-  <textarea name="q7_tuong_tac" rows="4"></textarea>
+  <textarea name="interaction_2025" rows="4"></textarea>
 
   <p><strong>8. Editor của năm đối với bạn là ai?</strong></p>
-  <textarea name="q8_editor_2" rows="4"></textarea>
+  <textarea name="editor_again_2025" rows="3"></textarea>
 
   <button type="submit">Gửi câu trả lời</button>
 </form>
