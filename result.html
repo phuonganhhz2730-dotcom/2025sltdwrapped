@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Kết quả</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  background: #5a0f1a;
+  color: #f3d9a4;
+  font-family: "Playfair Display", serif;
+}
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 40px 20px;
+}
+.result {
+  background: rgba(0,0,0,0.35);
+  border-radius: 16px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+.correct { color: #7CFFB2; }
+.wrong { color: #FF9B9B; }
+</style>
+</head>
+
+<body>
+<div class="container">
+<h2>Kết quả của bạn</h2>
+<div id="output"></div>
+</div>
+
+<script>
+const a1 = "A";
+const a2 = "nhất";
+
+const q1 = localStorage.getItem("q1");
+const q2 = localStorage.getItem("q2");
+
+let score = 0;
+let html = "";
+
+if (q1 === a1) {
+  score++;
+  html += `<div class="result correct">✔ Câu 1 đúng</div>`;
+} else {
+  html += `<div class="result wrong">
+  ✘ Câu 1 sai<br>
+  Đáp án đúng: <strong>3325</strong><br>
+  Giải thích: Vui lòng check lại moment concert ATVNCG Day 6 nha!
+  </div>`;
+}
+
+if (q2 === a2) {
+  score++;
+  html += `<div class="result correct">✔ Câu 2 đúng</div>`;
+} else {
+  html += `<div class="result wrong">
+  ✘ Câu 2 sai<br>
+  Đáp án đúng: <strong>nhất</strong><br>
+  Giải thích: Vui lòng check lại comment trên Youtube và trên Threads của anh Jun nha!
+  </div>`;
+}
+
+html = `<h3>Điểm: ${score}/2</h3>` + html;
+document.getElementById("output").innerHTML = html;
+</script>
+</body>
+</html>
