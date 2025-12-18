@@ -1,72 +1,72 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-<meta charset="UTF-8">
-<title>Kết quả</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-body {
-  margin: 0;
-  background: #5a0f1a;
-  color: #f3d9a4;
-  font-family: "Playfair Display", serif;
-}
-.container {
-  max-width: 700px;
-  margin: auto;
-  padding: 40px 20px;
-}
-.result {
-  background: rgba(0,0,0,0.35);
-  border-radius: 16px;
-  padding: 25px;
-  margin-bottom: 30px;
-}
-.correct { color: #7CFFB2; }
-.wrong { color: #FF9B9B; }
-</style>
-</head>
-
-<body>
-<div class="container">
-<h2>Kết quả của bạn</h2>
-<div id="output"></div>
-</div>
-
 <script>
-const a1 = "A";
-const a2 = "nhất";
+const userAnswers = {
+  q1: sessionStorage.getItem("q1"),
+  q2: sessionStorage.getItem("q2")
+};
 
-const q1 = localStorage.getItem("q1");
-const q2 = localStorage.getItem("q2");
+const questions = {
+  q1: {
+    title: "Con số gây chấn động shipdom?",
+    correct: "A",
+    correctText: "A. 3325",
+    explain: "Hãy check lại sự kiện bùng nổ này vào concert ATVNCG Day 6 nhé!"
+  },
+  q2: {
+    title: "Điền vào chỗ trống: “Đỉnh ___ với em không?” – “iu ___ hok?”",
+    correct: "nhất",
+    explain: "Hãy check lại comment của anh Jun Phạm trên Youtube và Threads nhé!”"
+  }
+};
 
 let score = 0;
-let html = "";
+let html = "<h2 style='text-align:center'>KẾT QUẢ</h2>";
 
-if (q1 === a1) {
-  score++;
-  html += `<div class="result correct">✔ Câu 1 đúng</div>`;
-} else {
-  html += `<div class="result wrong">
-  ✘ Câu 1 sai<br>
-  Đáp án đúng: <strong>3325</strong><br>
-  Giải thích: Vui lòng check lại moment concert ATVNCG Day 6 nha!
-  </div>`;
+Object.keys(questions).forEach((key, index) => {
+  const q = questions[key];
+  const user = (userAnswers[key] || "").toLowerCase();
+
+  const isCorrect =
+    key === "q1"
+      ? user === q.correct
+      : user === q.correct;
+
+  if (isCorrect) score++;
+
+  html += `
+    <div style="margin-top:20px;padding:16px;border-radius:14px;
+      background:rgba(255,255,255,.06)">
+      <b>Câu ${index + 1}:</b> ${q.title}<br>
+      ${
+        isCorrect
+          ? `<p class="good">✔ Bạn trả lời đúng</p>`
+          : `
+            <p class="bad">✘ Bạn trả lời: <b>${user || "(chưa trả lời)"}</b></p>
+            <p>✔ Đáp án đúng: <b>${q.correctText || q.correct}</b></p>
+            <p><em>Giải thích: ${q.explain}</em></p>
+          `
+      }
+    </div>
+  `;
+});
+
+html =
+  `<h3 style="text-align:center;margin-bottom:20px">
+    Điểm của bạn: ${score}/2
+   </h3>` + html;
+
+document.getElementById("out").innerHTML = html;
+
+// FIREWORK / SPARKLE
+for (let i = 0; i < 35; i++) {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = 3 + Math.random() * 3 + "s";
+  document.body.appendChild(s);
 }
 
-if (q2 === a2) {
-  score++;
-  html += `<div class="result correct">✔ Câu 2 đúng</div>`;
-} else {
-  html += `<div class="result wrong">
-  ✘ Câu 2 sai<br>
-  Đáp án đúng: <strong>nhất</strong><br>
-  Giải thích: Vui lòng check lại comment trên Youtube và trên Threads của anh Jun nha!
-  </div>`;
-}
-
-html = `<h3>Điểm: ${score}/2</h3>` + html;
-document.getElementById("output").innerHTML = html;
+// CHUYỂN TRANG
+setTimeout(() => {
+  window.location.href = "thankyou.html";
+}, 5000);
 </script>
-</body>
-</html>
