@@ -2,108 +2,100 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Access</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mật mã truy cập</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Cinzel:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#6a0f1c;
-  --box:#4b000f;
-  --gold:#f5e7c6;
-}
-
 body{
   margin:0;
-  min-height:100vh;
+  height:100vh;
+  background:radial-gradient(circle at top,#7a1b2d,#4b000f 70%);
   display:flex;
-  align-items:center;
   justify-content:center;
-  background:var(--bg);
-  color:var(--gold);
-  font-family:"Inter",sans-serif;
+  align-items:center;
+  font-family:"Playfair Display",serif;
+  color:#f5e7c6;
   overflow:hidden;
 }
-
-.container{
-  width:92%;
-  max-width:480px;
-  background:var(--box);
-  padding:48px 32px;
-  border-radius:18px;
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    radial-gradient(#f5e7c655 1px,transparent 1px),
+    radial-gradient(#f5e7c633 1px,transparent 1px);
+  background-size:120px 120px,180px 180px;
+  animation:sparkle 18s linear infinite;
+}
+@keyframes sparkle{
+  to{background-position:600px 1200px,-800px 600px}
+}
+.box{
+  background:rgba(60,10,20,.85);
+  border:1px solid #d8c48f55;
+  border-radius:22px;
+  padding:48px 36px;
+  width:min(92vw,420px);
   text-align:center;
-  box-shadow:0 20px 40px rgba(0,0,0,.35);
+  box-shadow:0 0 60px rgba(245,231,198,.18);
+  animation:fadeUp 1s ease;
 }
-
-h2{
-  font-family:"Playfair Display",serif;
-  font-size:34px;
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
 }
-
+h3{
+  font-family:"Cinzel",serif;
+  font-size:30px;
+}
+.hint{
+  font-size:15px;
+  opacity:.85;
+  margin-bottom:22px;
+}
 input{
   width:100%;
   padding:16px;
-  font-size:18px;
-  border-radius:12px;
+  border-radius:14px;
   border:none;
-  margin-top:20px;
+  text-align:center;
+  font-size:18px;
 }
-
 button{
-  margin-top:26px;
+  margin-top:22px;
   width:100%;
   padding:16px;
+  font-family:"Cinzel",serif;
   font-size:20px;
-  font-family:"Playfair Display",serif;
-  background:var(--gold);
-  color:var(--box);
+  background:linear-gradient(135deg,#f5e7c6,#d8c48f);
   border:none;
   border-radius:14px;
   cursor:pointer;
 }
-
-#error{color:#ffb3b3;margin-top:14px;}
-
-.sparkle{
-  position:fixed;
-  width:6px;height:6px;
-  background:rgba(255,255,255,.7);
-  border-radius:50%;
-  animation:float 6s linear infinite;
-}
-@keyframes float{
-  from{transform:translateY(100vh);opacity:0}
-  to{transform:translateY(-10vh);opacity:1}
+.error{
+  margin-top:16px;
+  color:#ffcccc;
 }
 </style>
 </head>
 
 <body>
-<div class="container">
-  <h2>Mật mã của năm</h2>
-  <p><em>Hint: 4 chữ số</em></p>
-
+<div class="box">
+  <h3>MẬT MÃ TRUY CẬP</h3>
+  <div class="hint">Hint: 4 chữ số</div>
   <input id="code" placeholder="....">
   <button onclick="check()">SUBMIT</button>
-  <div id="error"></div>
+  <div class="error" id="err"></div>
 </div>
 
 <script>
 function check(){
-  const v=document.getElementById("code").value.trim().toLowerCase();
-  if(v==="8992"){
-    window.location.href="quiz.html";
+  if(document.getElementById("code").value.trim()==="sinhnoitudong"){
+    location.href="quiz.html";
   }else{
-    document.getElementById("error").innerText="Mật mã chưa đúng!";
+    document.getElementById("err").innerText="Mật mã chưa đúng!";
   }
-}
-
-for(let i=0;i<18;i++){
-  const s=document.createElement("div");
-  s.className="sparkle";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDelay=Math.random()*5+"s";
-  document.body.appendChild(s);
 }
 </script>
 </body>
