@@ -10,40 +10,51 @@
 <style>
 body{
   margin:0;
-  height:100vh;
+  min-height:100vh;
   background:radial-gradient(circle at top,#6a1627,#3b0813 75%);
   font-family:"Playfair Display",serif;
   color:#f5e7c6;
   display:flex;
   justify-content:center;
   align-items:center;
-  text-align:center;
+  overflow:hidden;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(#f5e7c644 1px,transparent 1px),
+    radial-gradient(#f5e7c622 1px,transparent 1px);
+  background-size:120px 120px,200px 200px;
+  animation:sparkle 20s linear infinite;
+  pointer-events:none;
 }
 .box{
   background:rgba(30,5,10,.88);
-  padding:60px 40px;
+  padding:50px 40px;
   border-radius:26px;
+  text-align:center;
 }
-h1{font-size:42px;margin-bottom:18px;}
+h1{font-size:40px;}
 p{font-size:22px;}
 a{
   display:inline-block;
-  margin-top:28px;
-  padding:14px 28px;
+  margin-top:30px;
+  padding:14px 26px;
   background:linear-gradient(135deg,#f5e7c6,#d8c48f);
   color:#3b0813;
   text-decoration:none;
   border-radius:14px;
-  font-size:20px;
 }
 </style>
 </head>
 
 <body>
 <div class="box">
-<h1>CẢM ƠN BẠN VÌ ĐÃ KHÔNG LUNG LAY</h1>
-<p>Bạn đã đi hết chặng đường của Song Lời Tự Định 2025 rồi đó! Hãy cùng trải qua năm 2026 cùng nhau nhé ✨</p>
-<a href="index.html">Quay lại trang đầu</a>
+  <h1>CẢM ƠN BẠN VÌ ĐÃ KHÔNG LUNG LAY</h1>
+  <p>Bạn đã đi hết chặng đường của Song Lời Tự Định 2025! Hãy cùng nhau đi tiếp trong năm 2026 nhé ✨</p>
+  <a href="index.html">QUAY LẠI TRANG ĐẦU</a>
 </div>
 </body>
 </html>
